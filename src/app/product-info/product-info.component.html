@@ -1,0 +1,14 @@
+<table style="width:100%">
+  <tr>
+    <th *ngFor="let header of sortConfig" (click)="setSortColumn(header);" class="header.orderBy">
+      {{header.columnName}}<img *ngIf="header.columnOrder === 'dec'"
+        [ngClass]="{'active': header.orderBy === sortColumn}" src={{downImage}} /><img
+        *ngIf="header.columnOrder === 'asc'" src={{upImage}} [ngClass]="{'active': header.orderBy === sortColumn}" />
+    </th>
+  </tr>
+  <tr *ngFor="let data of productData | sort: sortColumn: sortOrder">
+    <td class="prodName">{{data.name}}</td>
+    <td class="price">{{data.price}}</td>
+    <td class="category">{{data.category}}</td>
+  </tr>
+</table>
